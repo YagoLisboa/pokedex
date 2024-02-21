@@ -19,16 +19,24 @@ function convertPokemonToLi(pokemon){
 
 const pokemonList = document.getElementById('pokemonList')
 
-// Método de consumo de APIs com Arrow function
-pokeApi.getPokemons().then((pokemons) => {
-    const listItems = []
+// Método de consumo de APIs com Arrow function e métodos de manipulação de lista
+pokeApi.getPokemons().then((pokemons = []) => {
+    pokemonList.innerHTML += pokemons.map(convertPokemonToLi).join('')
+})
 
-        for (let i = 0; i < pokemons.length; i++) {
-            const pokemon = pokemons[i];
-            listItems.push(convertPokemonToLi(pokemon))       
-        }
-        console.log(listItems)
-    })
+
+
+
+// Método de consumo de APIs com Arrow function e iteração convencional
+// pokeApi.getPokemons().then((pokemons) => {
+//     const listItems = []
+
+//         for (let i = 0; i < pokemons.length; i++) {
+//             const pokemon = pokemons[i];
+//             listItems.push(convertPokemonToLi(pokemon))       
+//         }
+//         console.log(listItems)
+//     })
     
 
 // Método convencional
